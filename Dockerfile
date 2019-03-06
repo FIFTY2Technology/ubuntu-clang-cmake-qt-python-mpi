@@ -34,11 +34,11 @@ RUN export current_dir=$pwd && \
 ENV PATH="/mpich-3.2-install/bin:${PATH}"
 
 # Download and install Python 3.5.
-RUN apt-get update && apt-get install -y software-properties-common --no-install-recommends && \
+RUN apt-get update && apt-get install -y software-properties-common && \
     wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
-    apt-get install -y python3.5-dev --no-install-recommends && \
+    apt-get install -y python3.5-dev && \
     python3.5 /tmp/get-pip.py && \
     rm -rf /tmp/ && \
     rm -rf /var/lib/apt/lists/*
@@ -48,7 +48,7 @@ RUN python3.5 -m pip install six progressbar2 wheel
 # Download and install Python 2.7.
 RUN mkdir -p /tmp && wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py && \
     apt-get update && \
-    apt-get install -y python2.7-dev --no-install-recommends && \
+    apt-get install -y python2.7-dev && \
     python2.7 /tmp/get-pip.py && \
     rm -rf /tmp/ && \
     rm -rf /var/lib/apt/lists/*
@@ -57,7 +57,7 @@ RUN python2.7 -m pip install wheel
 
 # Download and install Qt 5.7.
 ADD qt-installer-noninteractive.qs /tmp/qt_download/script.qs
-RUN apt-get update && apt-get install -y libgl1-mesa-dev fontconfig --no-install-recommends && \
+RUN apt-get update && apt-get install -y libgl1-mesa-dev fontconfig && \
     mkdir -p /tmp/qt_download && \
     cd /tmp/qt_download && \
     wget -nv 'http://download.qt.io/archive/qt/5.7/5.7.1/qt-opensource-linux-x64-5.7.1.run' && \
