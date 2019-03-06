@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer="gissler@fifty2.eu"
 
-RUN apt-get update && apt-get install -y clang wget make --no-install-recommends && \
+RUN apt-get update && apt-get install -y clang wget make && \
     rm -rf /var/lib/apt/lists/*
 
 # Define which compiler we want to use.
@@ -11,8 +11,8 @@ ENV CXX=/usr/bin/clang
 # Download and install latest cmake.
 RUN mkdir -p /tmp/cmake_download && \
     cd /tmp/cmake_download && \
-    wget -nv 'https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh' && \
-    bash cmake-3.10.2-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir && \
+    wget -nv 'https://github.com/Kitware/CMake/releases/download/v3.13.4/cmake-3.13.4-Linux-x86_64.sh' && \
+    bash cmake-3.13.4-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir && \
     cd && \
     rm -rf /tmp/cmake_download
 
