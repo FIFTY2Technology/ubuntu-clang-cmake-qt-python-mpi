@@ -40,8 +40,7 @@ RUN apt-get update && apt-get install -y software-properties-common && \
     apt-get update && \
     apt-get install -y python3.5-dev && \
     python3.5 /tmp/get-pip.py && \
-    rm -rf /tmp/ && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /tmp/
 # Install pip packages for Python 3.5.
 RUN python3.5 -m pip install six progressbar2 wheel
 
@@ -50,8 +49,7 @@ RUN mkdir -p /tmp && wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.p
     apt-get update && \
     apt-get install -y python2.7-dev && \
     python2.7 /tmp/get-pip.py && \
-    rm -rf /tmp/ && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /tmp/
 # Install pip packages for Python 2.7.
 RUN python2.7 -m pip install wheel
 
@@ -62,7 +60,7 @@ RUN apt-get update && apt-get install -y libgl1-mesa-dev fontconfig && \
     cd /tmp/qt_download && \
     wget -nv 'http://download.qt.io/archive/qt/5.7/5.7.1/qt-opensource-linux-x64-5.7.1.run' && \
     chmod +x ./qt-opensource-linux-x64-5.7.1.run && \
-    ./qt-opensource-linux-x64-5.7.1.run --script ./script.qs && \
+    ./qt-opensource-linux-x64-5.7.1.run --script ./script.qs -platform minimal && \
     cd && \
     rm -rf /tmp/qt_download && \
     rm -rf /var/lib/apt/lists/*
