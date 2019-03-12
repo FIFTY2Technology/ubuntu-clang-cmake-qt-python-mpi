@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer="gissler@fifty2.eu"
 
-RUN apt-get update && apt-get install -y clang wget make && \
+RUN apt-get update && apt-get install -y clang wget make build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 # Define which compiler we want to use.
